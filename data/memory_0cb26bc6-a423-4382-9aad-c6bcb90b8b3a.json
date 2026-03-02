@@ -1,0 +1,18 @@
+{
+  "profile": {
+    "name": null
+  },
+  "notes": [],
+  "history": [
+    {
+      "role": "user",
+      "text": "profilim",
+      "t": 1772486997304
+    },
+    {
+      "role": "bot",
+      "text": "📌 Profil:\n- İsim: (isim yok)\n- Şehir (notlardan): (şehir yok)\n- Not sayısı: 0",
+      "t": 1772486997306
+    }
+  ]
+}

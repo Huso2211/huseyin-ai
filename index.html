@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hüseyin AI</title>
+  <style>
+    :root{--bg:#0b1220;--card:rgba(255,255,255,.06);--border:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.62);--shadow:0 20px 60px rgba(0,0,0,.35);--radius:18px;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(900px 600px at 20% 10%, rgba(99,102,241,.25), transparent 60%),
+                 radial-gradient(900px 600px at 80% 20%, rgba(34,197,94,.18), transparent 55%),
+                 radial-gradient(900px 600px at 50% 90%, rgba(236,72,153,.16), transparent 60%),
+                 var(--bg);
+      color:var(--text);min-height:100vh;display:grid;place-items:center;padding:28px 16px;}
+    .app{width:min(860px,100%);background:var(--card);border:1px solid var(--border);
+      border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(16px);overflow:hidden;}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;
+      background:linear-gradient(to bottom, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border-bottom:1px solid var(--border);}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .logo{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;
+      background:rgba(255,255,255,.08);border:1px solid var(--border)}
+    .h1{font-size:14px;font-weight:700;margin:0;line-height:1.2}
+    .sub{font-size:12px;margin:3px 0 0;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .btn{padding:10px 12px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);color:var(--text);cursor:pointer;font-weight:700;font-size:12px}
+    .btn:hover{background:rgba(255,255,255,.10)}
+    .btn.on{border-color:rgba(34,197,94,.55);background:rgba(34,197,94,.14)}
+    .btn.warn{border-color:rgba(245,158,11,.55);background:rgba(245,158,11,.14)}
+    .chat{height:520px;overflow:auto;padding:18px 16px 8px}
+    .row{display:flex;margin:10px 0}
+    .row.user{justify-content:flex-end}
+    .bubble{max-width:78%;padding:10px 12px;border-radius:16px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);line-height:1.35;white-space:pre-wrap;word-break:break-word}
+    .row.user .bubble{background:linear-gradient(135deg, rgba(99,102,241,.35), rgba(34,197,94,.18));border-color:rgba(255,255,255,.18)}
+    .meta{margin-top:6px;font-size:11px;color:var(--muted)}
+    .composer{border-top:1px solid var(--border);padding:12px;background:rgba(255,255,255,.04);
+      display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+    .input{width:100%;padding:12px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(0,0,0,.22);color:var(--text);outline:none;font-size:14px}
+    .send{padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.18);
+      background:rgba(99,102,241,.28);color:var(--text);font-weight:900;cursor:pointer}
+    .hint{font-size:12px;color:var(--muted);padding:0 16px 14px}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:7px 10px;border-radius:999px;
+      border:1px solid var(--border);background:rgba(255,255,255,.05);cursor:pointer;user-select:none;margin:8px 8px 0 0;font-size:12px}
+    .typing{opacity:.8;font-size:12px;color:var(--muted);padding:0 16px 12px;display:none}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;place-items:center;padding:18px}
+    .modal{width:min(620px,100%);background:rgba(15,23,42,.92);border:1px solid var(--border);
+      border-radius:20px;box-shadow:var(--shadow);backdrop-filter:blur(16px);overflow:hidden}
+    .modalHead{display:flex;align-items:center;justify-content:space-between;padding:14px;border-bottom:1px solid var(--border)}
+    .modalTitle{font-weight:900}
+    .modalBody{padding:14px}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .card{border:1px solid var(--border);background:rgba(255,255,255,.05);border-radius:16px;padding:12px}
+    .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .row2{display:flex;gap:10px;align-items:center}
+    .small{font-size:12px;color:var(--muted)}
+    .danger{background:rgba(239,68,68,.18)}
+    .danger:hover{background:rgba(239,68,68,.26)}
+    ul{margin:8px 0 0;padding-left:18px}
+    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+      background:rgba(0,0,0,.55);border:1px solid var(--border);backdrop-filter:blur(10px);
+      padding:10px 12px;border-radius:14px;font-size:12px;color:var(--text);display:none}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">🤖</div>
+        <div>
+          <p class="h1">Hüseyin AI</p>
+          <p class="sub" id="subtitle">Hafizali • Web Arama + Wikipedia • Sesli</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="quickHelp">Yardim</button>
+        <button class="btn" id="settingsBtn">Ayarlar</button>
+        <button class="btn" id="micBtn">🎤 Konus</button>
+        <button class="btn" id="ttsBtn">🔊 Oku</button>
+        <button class="btn" id="clear">Temizle</button>
+      </div>
+    </div>
+
+    <div class="chat" id="chat"></div>
+
+    <div class="hint">
+      <span class="pill" data-q="yardim">yardim</span>
+      <span class="pill" data-q="profilim">profilim</span>
+      <span class="pill" data-q="notlarim">notlarim</span>
+      <span class="pill" data-q="ara: Ordu hava durumu">ara: Ordu hava durumu</span>
+      <span class="pill" data-q="wiki: Mustafa Kemal Ataturk">wiki: Ataturk</span>
+    </div>
+
+    <div class="typing" id="typing">Yaziyor...</div>
+
+    <div class="composer">
+      <input class="input" id="message" placeholder="Mesaj yaz... (Enter)" autocomplete="off" />
+      <button class="send" id="send">Gonder</button>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <div class="modalHead">
+        <div class="modalTitle">Ayarlar</div>
+        <button class="btn" id="closeSettings">Kapat</button>
+      </div>
+      <div class="modalBody">
+        <div class="grid">
+          <div class="card">
+            <div class="label">Profil</div>
+            <div class="small">Isim: <b id="meName">(yukleniyor)</b></div>
+            <div class="row2" style="margin-top:10px">
+              <input class="input" id="nameInput" placeholder="Ismini yaz" />
+              <button class="btn" id="saveName">Kaydet</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="label">Notlar</div>
+            <div class="row2">
+              <input class="input" id="noteInput" placeholder="Yeni not ekle" />
+              <button class="btn" id="addNote">Ekle</button>
+            </div>
+            <div class="small" style="margin-top:10px">Kayitli notlar:</div>
+            <ul id="notesList"></ul>
+          </div>
+
+          <div class="card">
+            <div class="label">Yedek</div>
+            <div class="small">Hafizani indir veya geri yukle (JSON).</div>
+            <div class="row2" style="margin-top:10px">
+              <button class="btn" id="downloadMem">Indir</button>
+              <input class="input" id="uploadMem" type="file" accept="application/json" />
+              <button class="btn" id="restoreMem">Yukle</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="label">Sifirla</div>
+            <div class="small">Tum hafizayi siler.</div>
+            <button class="btn danger" id="resetAll" style="margin-top:10px">Hepsini Unut</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+  const chat = document.getElementById("chat");
+  const input = document.getElementById("message");
+  const typing = document.getElementById("typing");
+  const toast = document.getElementById("toast");
+
+  let lastBotReply = "";
+
+  function showToast(t){
+    toast.innerText = t;
+    toast.style.display = "block";
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(()=> toast.style.display="none", 2200);
+  }
+
+  function timeNow(){
+    const d = new Date();
+    return d.toLocaleTimeString("tr-TR", {hour:"2-digit", minute:"2-digit"});
+  }
+  function addBubble(text, who){
+    const row = document.createElement("div");
+    row.className = "row " + who;
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.innerText = text;
+    const wrap = document.createElement("div");
+    wrap.appendChild(bubble);
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.innerText = (who==="user" ? "sen" : "AI") + " • " + timeNow();
+    wrap.appendChild(meta);
+    row.appendChild(wrap);
+    chat.appendChild(row);
+    chat.scrollTop = chat.scrollHeight;
+
+    if (who === "bot") lastBotReply = text;
+  }
+
+  async function sendMessage(messageOverride){
+    const message = (messageOverride ?? input.value).trim();
+    if(!message) return;
+    addBubble(message, "user");
+    input.value = "";
+    input.focus();
+    typing.style.display = "block";
+    try{
+      const res = await fetch("/chat", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ message })
+      });
+      const data = await res.json();
+      addBubble(data.reply, "bot");
+    }catch{
+      addBubble("Baglanti sorunu.", "bot");
+    }finally{
+      typing.style.display = "none";
+    }
+  }
+
+  document.getElementById("send").addEventListener("click", () => sendMessage());
+  input.addEventListener("keydown", (e)=>{ if(e.key==="Enter") sendMessage(); });
+
+  document.getElementById("clear").addEventListener("click", ()=>{
+    chat.innerHTML = "";
+    addBubble("Temizlendi. 'yardim' yaz.", "bot");
+    input.focus();
+  });
+  document.getElementById("quickHelp").addEventListener("click", ()=>sendMessage("yardim"));
+  document.querySelectorAll(".pill").forEach(p=>p.addEventListener("click", ()=>sendMessage(p.getAttribute("data-q"))));
+  addBubble("Merhaba! 'yardim' yazarak baslayabilirsin.", "bot");
+
+  // ---- settings ----
+  const overlay = document.getElementById("overlay");
+  const meName = document.getElementById("meName");
+  const notesList = document.getElementById("notesList");
+  const nameInput = document.getElementById("nameInput");
+  const noteInput = document.getElementById("noteInput");
+
+  async function refreshMe(){
+    const r = await fetch("/me");
+    const me = await r.json();
+    meName.innerText = me.name || "(isim yok)";
+    notesList.innerHTML = "";
+    (me.notes || []).forEach(n=>{
+      const li = document.createElement("li");
+      li.innerText = n;
+      notesList.appendChild(li);
+    });
+  }
+
+  document.getElementById("settingsBtn").addEventListener("click", async ()=>{
+    overlay.style.display="grid";
+    await refreshMe();
+    nameInput.focus();
+  });
+  document.getElementById("closeSettings").addEventListener("click", ()=>{ overlay.style.display="none"; });
+  overlay.addEventListener("click", (e)=>{ if(e.target===overlay) overlay.style.display="none"; });
+
+  document.getElementById("saveName").addEventListener("click", async ()=>{
+    const name = nameInput.value.trim();
+    if(!name) return;
+    await fetch("/set-name", {method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name })});
+    nameInput.value="";
+    await refreshMe();
+    showToast("Kaydedildi");
+  });
+
+  document.getElementById("addNote").addEventListener("click", async ()=>{
+    const note = noteInput.value.trim();
+    if(!note) return;
+    await fetch("/add-note", {method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ note })});
+    noteInput.value="";
+    await refreshMe();
+    showToast("Not eklendi");
+  });
+
+  document.getElementById("downloadMem").addEventListener("click", ()=>{
+    window.location.href = "/export";
+  });
+
+  document.getElementById("restoreMem").addEventListener("click", async ()=>{
+    const f = document.getElementById("uploadMem").files[0];
+    if(!f) return alert("Once dosya sec.");
+    let json;
+    try{ json = JSON.parse(await f.text()); }catch{ return alert("Gecersiz JSON."); }
+    await fetch("/import", {method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(json)});
+    await refreshMe();
+    addBubble("Yedek geri yuklendi.", "bot");
+  });
+
+  document.getElementById("resetAll").addEventListener("click", async ()=>{
+    if(!confirm("Tum hafizayi sifirlamak istiyor musun?")) return;
+    await fetch("/reset", {method:"POST"});
+    await refreshMe();
+    addBubble("Hafiza sifirlandi.", "bot");
+  });
+
+  // ---- Speech: STT (mic) + TTS (read) ----
+  const micBtn = document.getElementById("micBtn");
+  const ttsBtn = document.getElementById("ttsBtn");
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let rec = null;
+  let listening = false;
+
+  function stopSpeak(){
+    try{ window.speechSynthesis.cancel(); }catch{}
+  }
+
+  function speak(text){
+    stopSpeak();
+    if(!("speechSynthesis" in window)) return showToast("Sesli okuma desteklenmiyor.");
+    const u = new SpeechSynthesisUtterance(text.slice(0, 800));
+    u.lang = "tr-TR";
+    u.rate = 1;
+    u.pitch = 1;
+    window.speechSynthesis.speak(u);
+  }
+
+  if (SpeechRecognition) {
+    rec = new SpeechRecognition();
+    rec.lang = "tr-TR";
+    rec.interimResults = true;
+    rec.continuous = false;
+
+    rec.onstart = () => {
+      listening = true;
+      micBtn.classList.add("on");
+      micBtn.innerText = "🎤 Dinliyor...";
+      showToast("Dinliyorum...");
+    };
+
+    rec.onend = () => {
+      listening = false;
+      micBtn.classList.remove("on");
+      micBtn.innerText = "🎤 Konus";
+    };
+
+    rec.onerror = (e) => {
+      micBtn.classList.remove("on");
+      micBtn.classList.add("warn");
+      setTimeout(()=> micBtn.classList.remove("warn"), 1200);
+      showToast("Mikrofon hatasi: " + (e.error || "bilinmiyor"));
+    };
+
+    rec.onresult = (event) => {
+      let finalText = "";
+      let interim = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const t = event.results[i][0].transcript;
+        if (event.results[i].isFinal) finalText += t;
+        else interim += t;
+      }
+      input.value = (finalText || interim).trim();
+      if (finalText && finalText.trim().length) {
+        sendMessage(finalText.trim());
+      }
+    };
+
+    micBtn.addEventListener("click", async () => {
+      try {
+        stopSpeak();
+        if (listening) return rec.stop();
+
+        // izin istemeyi tetikler
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        rec.start();
+      } catch {
+        showToast("Mikrofon izni verilmeli (Tarayici ayarlari).");
+      }
+    });
+  } else {
+    micBtn.addEventListener("click", () => showToast("Konusma tanima bu tarayicida yok. Chrome dene."));
+  }
+
+  ttsBtn.addEventListener("click", () => {
+    if (!lastBotReply) return showToast("Once AI cevap versin.");
+    speak(lastBotReply);
+  });
+</script>
+</body>
+</html>

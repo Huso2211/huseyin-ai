@@ -1,0 +1,36 @@
+{
+  "name": null,
+  "notes": [],
+  "history": [
+    {
+      "role": "user",
+      "text": "profilim",
+      "t": 1772489107886
+    },
+    {
+      "role": "bot",
+      "text": "Isim: (yok)\nNot sayisi: 0",
+      "t": 1772489107886
+    },
+    {
+      "role": "user",
+      "text": "Merhaba nasılsın",
+      "t": 1772489273671
+    },
+    {
+      "role": "bot",
+      "text": "Buldugum web sonuclari:\n1) What does \"merhaba nasılsın\" mean in Turkish? - WordHippo\n//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.wordhippo.com%2Fwhat%2Dis%2Fthe%2Dmeaning%2Dof%2Fturkish%2Dword%2D77b45d7756d190a6edac1b6a88f9c28abfc25615.html&rut=ddcd25563b69d54ff6d834d9c4b5d3c33196f1acb105d69f5ab8dc9c18fe79f1\n\n2) Tureng - merhaba nasılsın - Turkish English Dictionary\n//duckduckgo.com/l/?uddg=https%3A%2F%2Ftureng.com%2Fen%2Fturkish%2Denglish%2Fmerhaba%2520nas%25C4%25B1ls%25C4%25B1n&rut=827d38adbc69ea8f98ea6dee7c29aac0f3ff8939783830c33deb2ce5f886ebe1\n\n3) Türkçe&#x27;de Selamlaşma | How to Say Hello and ... - YouTube\n//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DEABtVVRmf3c&rut=8aae86f73f5457c23a11c9b52f75fa81aaf940f39a11d3c969e147f8bca07683",
+      "t": 1772489274702
+    },
+    {
+      "role": "user",
+      "text": "ara: fatih sultan mehmet han",
+      "t": 1772489525993
+    },
+    {
+      "role": "bot",
+      "text": "Web sonuclari:\n1) II. Mehmed - Vikipedi\n//duckduckgo.com/l/?uddg=https%3A%2F%2Ftr.wikipedia.org%2Fwiki%2FII._Mehmed&rut=ef63ad89f09bef90cddd043c066149a9f3bdf7ab9c116fa5d35968b8f2f950a6\n\n2) Fatih Sultan Mehmet Kimdir? Kısaca Fatih Sultan Mehmet&#x27;in ... - Milliyet\n//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.milliyet.com.tr%2Fegitim%2Ffatih%2Dsultan%2Dmehmet%2Dkimdir%2Dkisaca%2Dfatih%2Dsultan%2Dmehmetin%2Dhayati%2Dve%2Dsozleri%2D6411832&rut=b642471e4ca22c3e85d6d2e930a865e005302fa85f0da2acc7d041bd3a211727\n\n3) Fatih Sultan Mehmed Han - Dinimiz İslam\n//duckduckgo.com/l/?uddg=https%3A%2F%2Fdinimizislam.com%2Fdetay.asp%3FAid%3D2433&rut=eb0ac8dcd225ee3a9db4fcc312bb9bd310ab3484eee41af6b98cb0ee6a9db988\n\n4) Fatih Sultan Mehmed Han - Osmanlı Padişahları\n//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.tarihportali.org%2Fosmanlipadisahlari%2Ffatih_sultan_mehmed.htm&rut=c40fd7b927fb7b98a71e87dae79d72a8ac229205bf17470c5ed77bcb154c1e32\n\n5) Fatih Sultan Mehmet Han - Osmanlı Padişahları | ihya.org\n//duckduckgo.com/l/?uddg=https%3A%2F%2Ftarih.ihya.org%2Fosmanli%2Dpadisahlari%2Ffatih%2Dsultan%2Dmehmet%2Dhan.html&rut=793577534d3e730a639b7f1d8093f617703e52eb92abdd6343989c448bcc29db",
+      "t": 1772489527395
+    }
+  ]
+}

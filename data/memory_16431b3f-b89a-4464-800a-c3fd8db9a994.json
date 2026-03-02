@@ -1,0 +1,26 @@
+{
+  "name": null,
+  "notes": [],
+  "history": [
+    {
+      "role": "user",
+      "text": "ara: Ordu hava durumu",
+      "t": 1772487776057
+    },
+    {
+      "role": "bot",
+      "text": "Buldugum: Hava durumu\n\nHava durumu ya da kısaca hava, yaşam ve insan aktiviteleri üzerindeki etkisini de göz önüne almak koşuluyla atmosferin belirli bir anda, belirli bir bölgedeki hali. Bazen çoğul olarak havalar şeklinde kullanılır. Hava durumu kavramı ile genellikle uzun dönemde gerçekleşen yani iklimsel değişimler değil, atmosferdeki kısa dönemde gerçekleşen değişimler kastedilir. Gökyüzünün görüş, bulutluluk, nem, yağış, sıcaklık ve rüzgâr durumu gibi çeşitli özelliklerini ifade eder.\n\nKaynak: https://tr.wikipedia.org/wiki/Hava_durumu",
+      "t": 1772487776950
+    },
+    {
+      "role": "user",
+      "text": "wiki: Mustafa Kemal Atatürk",
+      "t": 1772487780823
+    },
+    {
+      "role": "bot",
+      "text": "Mustafa Kemal Atatürk\n\nMustafa Kemal Atatürk, Türk mareşal, devlet adamı, yazar, Türk Kurtuluş Savaşı'nın başkomutanı, Türkiye Cumhuriyeti'nin kurucusu ve ilk cumhurbaşkanıdır. Türkiye'yi laik, sanayileşen bir ulusa dönüştüren kapsamlı ilerici reformlar üstlenmiştir. İdeolojik olarak sekülarist ve milliyetçi politikaları ve sosyo-politik teorileri Kemalizm olarak tanınmıştır.\n\nKaynak: https://tr.wikipedia.org/wiki/Mustafa_Kemal_Atat%C3%BCrk",
+      "t": 1772487780909
+    }
+  ]
+}

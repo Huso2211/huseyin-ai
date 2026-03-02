@@ -1,0 +1,161 @@
+{
+  "profile": {
+    "name": "Hüseyin"
+  },
+  "notes": [
+    "Ordu’da yaşıyorum",
+    "ordu da üniversite okuyorum Manisa da yaşıyorum 22 yaşındayım"
+  ],
+  "history": [
+    {
+      "role": "user",
+      "text": "nerede yaşıyorum?",
+      "t": 1772481821885
+    },
+    {
+      "role": "bot",
+      "text": "Hüseyin, notlarına göre **Ordu**’da yaşıyorsun.",
+      "t": 1772481821886
+    },
+    {
+      "role": "user",
+      "text": "nerede yaşıyorum?",
+      "t": 1772482182956
+    },
+    {
+      "role": "bot",
+      "text": "Hüseyin, notlarına göre **Ordu**’da yaşıyorsun.",
+      "t": 1772482182957
+    },
+    {
+      "role": "user",
+      "text": "Selam",
+      "t": 1772485103888
+    },
+    {
+      "role": "bot",
+      "text": "Merhaba Hüseyin 👋",
+      "t": 1772485103889
+    },
+    {
+      "role": "user",
+      "text": "Yardım",
+      "t": 1772485440063
+    },
+    {
+      "role": "bot",
+      "text": "Komutlar:\n- yardım\n- adım: Hüseyin  (hafızaya kaydeder)\n- profilim\n- hatırla: ...  (not ekler)\n- notlarım\n- hepsini unut\n\nBilgi:\n- wiki: ...  (Wikipedia özeti)\n- ara: ...   (Wikipedia'da arar + özet)\n\nDoğal kullanım:\n- \"nerede yaşıyorum?\"\n- \"hava nasıl?\" (notlardan şehir varsa ona göre öneri verir)",
+      "t": 1772485440064
+    },
+    {
+      "role": "user",
+      "text": "31 çekmek günah mı",
+      "t": 1772485450034
+    },
+    {
+      "role": "bot",
+      "text": "🔎 Hüseyin, bulduğum: Ölümsüz (film)\n\n\"Ölümsüz\", 2000 yılında gösterime giren bir psikolojik gerilim filmidir. Yapımını, yönetmenliğini ve senaryo yazarlığını M. Night Shyamalan'ın üstlendiği filmin oyuncuları arasında Bruce Willis, Samuel L. Jackson, Robin Wright Penn ve Spencer Treat Clark yer almaktadır. Film, Philadelphia'da bir güvenlik görevlisi olarak çalışan ancak sonrasında bir bağlamda gerçek bir süper kahraman olduğunu fark eden David Dunn hakkındadır. Film yoğun olarak gerçek yaşam ve kurgusal yaşam arasındaki benzerlikleri göstermek adına çizgi roman kitapları ile ilgili çeşitli ögeler barındırır.\n\nKaynak: https://tr.wikipedia.org/wiki/%C3%96l%C3%BCms%C3%BCz_(film)\n\n(Not: Ordu ile ilgili bir şey istersen söyle.)",
+      "t": 1772485451047
+    },
+    {
+      "role": "user",
+      "text": "Hava nasıl",
+      "t": 1772485462024
+    },
+    {
+      "role": "bot",
+      "text": "Hüseyin, gerçek zamanlı hava ölçemiyorum ama hızlıca şunu yapabilirsin:\n- \"ara: Ordu hava durumu\"\nİstersen şehri değiştir: \"hatırla: İstanbul’da yaşıyorum\"",
+      "t": 1772485462025
+    },
+    {
+      "role": "user",
+      "text": "Napiyon",
+      "t": 1772485553843
+    },
+    {
+      "role": "bot",
+      "text": "🔎 Hüseyin, bulduğum: Bulgaristan Türkleri\n\nBulgaristan Türkleri, soyları Osmanlı İmparatorluğu döneminden itibaren iskan politikası ile Balkanlar'a göç etmiş Türklerden gelen, günümüzde Bulgaristan topraklarında yaşayan Türklerdir. 2021 yılında 514,836 Türk asıllı Bulgaristan vatandaşı vardır ve bu da onları ülkenin en büyük etnik azınlığı yapmaktadır. Bulgaristan Türkleri aynı zamanda Balkanlar'daki en büyük Türk nüfusunu oluşturmaktadır. Genel olarak güneydeki Kırcaali ilinde ve kuzeydoğudaki Şumnu, Silistre, Razgrad ve Eski Cuma illerinde yaşarlar.\n\nKaynak: https://tr.wikipedia.org/wiki/Bulgaristan_T%C3%BCrkleri\n\n(Not: Ordu ile ilgili bir şey istersen söyle.)",
+      "t": 1772485556522
+    },
+    {
+      "role": "user",
+      "text": "profilim",
+      "t": 1772485596849
+    },
+    {
+      "role": "bot",
+      "text": "📌 Profil:\n- İsim: Hüseyin\n- Şehir (notlardan): Ordu\n- Not sayısı: 2\n\nİstersen: \"hatırla: Ordu’da yaşıyorum\" gibi not ekleyebilirsin.",
+      "t": 1772485596850
+    },
+    {
+      "role": "user",
+      "text": "profilim",
+      "t": 1772485599616
+    },
+    {
+      "role": "bot",
+      "text": "📌 Profil:\n- İsim: Hüseyin\n- Şehir (notlardan): Ordu\n- Not sayısı: 2\n\nİstersen: \"hatırla: Ordu’da yaşıyorum\" gibi not ekleyebilirsin.",
+      "t": 1772485599616
+    },
+    {
+      "role": "user",
+      "text": "profilim",
+      "t": 1772485600225
+    },
+    {
+      "role": "bot",
+      "text": "📌 Profil:\n- İsim: Hüseyin\n- Şehir (notlardan): Ordu\n- Not sayısı: 2\n\nİstersen: \"hatırla: Ordu’da yaşıyorum\" gibi not ekleyebilirsin.",
+      "t": 1772485600226
+    },
+    {
+      "role": "user",
+      "text": "notlarım",
+      "t": 1772485613436
+    },
+    {
+      "role": "bot",
+      "text": "🧠 Notların:\n- Ordu’da yaşıyorum\n- ordu da üniversite okuyorum Manisa da yaşıyorum 22 yaşındayım",
+      "t": 1772485613437
+    },
+    {
+      "role": "user",
+      "text": "merhaba hüseyin",
+      "t": 1772485643235
+    },
+    {
+      "role": "bot",
+      "text": "Merhaba Hüseyin 👋",
+      "t": 1772485643236
+    },
+    {
+      "role": "user",
+      "text": "Mevlüt oe mi?",
+      "t": 1772485681737
+    },
+    {
+      "role": "bot",
+      "text": "🔎 Hüseyin, bulduğum: 2020-21 Süper Lig maçları\n\n2020-21 Süper Lig maçları, 2020-21 Süper Lig sezonunda oynanan maçların ayrıntılarını içeren maddedir.\n\nKaynak: https://tr.wikipedia.org/wiki/2020-21_S%C3%BCper_Lig_ma%C3%A7lar%C4%B1\n\n(Not: Ordu ile ilgili bir şey istersen söyle.)",
+      "t": 1772485682878
+    },
+    {
+      "role": "user",
+      "text": "yardım",
+      "t": 1772485691157
+    },
+    {
+      "role": "bot",
+      "text": "Komutlar:\n- yardım\n- adım: Hüseyin  (hafızaya kaydeder)\n- profilim\n- hatırla: ...  (not ekler)\n- notlarım\n- hepsini unut\n\nBilgi:\n- wiki: ...  (Wikipedia özeti)\n- ara: ...   (Wikipedia'da arar + özet)\n\nDoğal kullanım:\n- \"nerede yaşıyorum?\"\n- \"hava nasıl?\" (notlardan şehir varsa ona göre öneri verir)",
+      "t": 1772485691158
+    },
+    {
+      "role": "user",
+      "text": "yardım",
+      "t": 1772485697199
+    },
+    {
+      "role": "bot",
+      "text": "Komutlar:\n- yardım\n- adım: Hüseyin  (hafızaya kaydeder)\n- profilim\n- hatırla: ...  (not ekler)\n- notlarım\n- hepsini unut\n\nBilgi:\n- wiki: ...  (Wikipedia özeti)\n- ara: ...   (Wikipedia'da arar + özet)\n\nDoğal kullanım:\n- \"nerede yaşıyorum?\"\n- \"hava nasıl?\" (notlardan şehir varsa ona göre öneri verir)",
+      "t": 1772485697200
+    }
+  ]
+}
