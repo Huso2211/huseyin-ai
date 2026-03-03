@@ -82,7 +82,16 @@ app.get("/", requireAuth, (req, res) => {
 });
 
 // ====== OPENAI CHAT ======
-app.post("/chat", requireAuth, async (req, res) => {
+app.post("// Basit hız limiti (aynı kullanıcı 2 saniye içinde tekrar atamasın)
+global._lastCall = global._lastCall || {};
+const sid = (req.headers.cookie || "").slice(0, 80);
+const now = Date.now();
+
+if (global._lastCall[sid] && now - global._lastCall[sid] < 2000) {
+  return res.json({ reply: "Çok hızlı yazıyorsun 🙂 2 saniye bekle." });
+}
+
+global._lastCall[sid] = now;/chat", requireAuth, async (req, res) => {
   const message = String((req.body && req.body.message) || "").trim();
 
   if (!process.env.OPENAI_API_KEY) {
@@ -108,8 +117,14 @@ app.post("/chat", requireAuth, async (req, res) => {
     const data = await r.json();
 
     // Hata varsa ekrana bas (sadece log)
-    if (!r.ok) {
-      console.error("OPENAI ERROR:", r.status, data);
+      ...
+if (!r.ok) {
+  if (r.status === 429) {
+    return res.json({ reply: "Limit dolu veya yoğunluk var (429). 1 dakika sonra tekrar dene." });
+  }
+
+  return res.json({ reply: "OpenAI hatası: " + r.status });
+}      console.error("OPENAI ERROR:", r.status, data);
       return res.json({ reply: "OpenAI hatası: " + r.status });
     }
 
