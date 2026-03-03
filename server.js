@@ -6,6 +6,82 @@ const crypto = require("crypto");
 const app = express();
 app.set("trust proxy", 1);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ---------- PASSWORD PROTECTION ----------
+const APP_PASSWORD = process.env.APP_PASSWORD || "";
+
+// basit cookie parse
+function parseCookieHeader(h = "") {
+  const out = {};
+  h.split(";").forEach(part => {
+    const s = part.trim();
+    if (!s) return;
+    const i = s.indexOf("=");
+    const k = i >= 0 ? s.slice(0, i) : s;
+    const v = i >= 0 ? s.slice(i + 1) : "";
+    out[k] = decodeURIComponent(v);
+  });
+  return out;
+}
+
+function isAuthed(req) {
+  if (!APP_PASSWORD) return true; // şifre ayarlanmadıysa koruma yok
+  const c = parseCookieHeader(req.headers.cookie || "");
+  return c.auth === "1";
+}
+
+// Login sayfası
+app.get("/login", (req, res) => {
+  if (isAuthed(req)) return res.redirect("/");
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.end(`<!doctype html>
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Giriş</title>
+<style>
+body{font-family:Arial;display:flex;min-height:100vh;align-items:center;justify-content:center;background:#111;color:#fff}
+.card{background:#1b1b1b;padding:18px;border-radius:14px;max-width:360px;width:92%}
+input,button{width:100%;padding:12px;border-radius:10px;border:0;margin-top:10px;font-size:16px}
+button{cursor:pointer}
+small{opacity:.8}
+</style></head>
+<body>
+  <div class="card">
+    <h2>Hüseyin AI Giriş</h2>
+    <small>Şifre girince 30 gün hatırlar.</small>
+    <form method="POST" action="/login">
+      <input name="password" type="password" placeholder="Şifre" required />
+      <button type="submit">Giriş Yap</button>
+    </form>
+  </div>
+</body></html>`);
+});
+
+app.post("/login", (req, res) => {
+  const pass = String(req.body.password || "");
+  if (!APP_PASSWORD) return res.redirect("/"); // koruma yoksa
+  if (pass === APP_PASSWORD) {
+    // 30 gün
+    res.setHeader("Set-Cookie", `auth=1; Path=/; Max-Age=${30*24*60*60}; SameSite=Lax`);
+    return res.redirect("/");
+  }
+  return res.redirect("/login");
+});
+
+// Koruma middleware (login ve healthz hariç)
+app.use((req, res, next) => {
+  if (!APP_PASSWORD) return next();
+  if (req.path === "/login" || req.path === "/healthz") return next();
+  if (isAuthed(req)) return next();
+
+  // Sayfa istekleri -> login'e yönlendir
+  if (req.method === "GET") return res.redirect("/login");
+
+  // API istekleri -> 401
+  return res.status(401).json({ reply: "Giriş gerekli (şifre)." });
+});
+// ---------- END PASSWORD PROTECTION ----------
+
 
 // ---------------- RATE LIMIT ----------------
 const WINDOW_MS = 60 * 1000;
@@ -113,6 +189,8 @@ async function webSearch(query, limit = 5) {
 }
 
 // ---------------- ROUTES ----------------
+app.get("/healthz", (req, res) => res.status(200).send("ok"));
+
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 app.use(rateLimit);
